@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar >
+    <ion-title>Preguntas</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" block full (click)="verCuentas()">
+        Cuentas
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+ 
+<ion-content>
+    <ion-list>
+    <ion-item  *ngIf="user.getPregunta() == null" text-wrap>
+      No hay preguntas cargadas ..
+    </ion-item>
+    <ion-item  *ngIf="user.getPregunta() != null" text-wrap>
+      <ion-grid>
+          <ion-row (click)="verPublicacion(user.getPregunta())">
+            <ion-col width-20>
+                  <img src="{{ user.getPregunta().item.thumbnail }}" />
+            </ion-col>
+            <ion-col width-80>
+              <b>{{ user.getPregunta().item.title}}</b>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-100>
+              {{ user.getPregunta().text }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+
+      <ion-card >
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col width-100>
+                <ion-item>
+                  <ion-textarea rows="6" [(ngModel)]="respuesta" placeholder="Respuesta"></ion-textarea>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col width-50>
+                <button ion-button color="light" block full (click)="saltear()">
+                  <ion-icon name="skip-forward"></ion-icon>
+                </button>
+              </ion-col>
+              <ion-col width-50>
+                <button ion-button color="secondary" block full (click)="enviar()">
+                  <ion-icon name="send"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      
+      <ion-grid>
+            <ion-row>
+              <ion-col width-33>
+                <button ion-button color="primary" block full (click)="stock()">Hay stock</button>
+              </ion-col>
+              <ion-col width-33>
+                <button ion-button color="primary" block full (click)="ubicacion()">Ubicación</button>
+              </ion-col>
+              <ion-col width-33>
+                <button ion-button color="primary" block full (click)="envio()">Envio</button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+    
+</ion-content>

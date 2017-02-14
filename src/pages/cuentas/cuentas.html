@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cuentas ML</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" block full (click)="verPreguntas()">
+        Preguntas
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+    
+    <ion-list>
+    <ion-item *ngFor="let cuenta of user.cuentas" text-wrap>
+      
+      <ion-card (click)="verDetalleCuenta(cuenta)">
+        <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col width-100>
+              {{ cuenta.nickname }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-item>
+  </ion-list>
+    <button ion-button color="primary" block full (click)="agregarNuevaCuenta()">
+      Agregar nueva cuenta
+    </button>
+    
+</ion-content>
